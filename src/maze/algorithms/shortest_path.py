@@ -28,7 +28,7 @@ class ShortestPath(MazeSolver):
         Returns
         -------
         list[tuple[int, int]]
-            An ordered list of cells representing the solution path.
+            An ordered list of cell locations representing the solution path.
         """
         queue = deque([start])
         visited = set()

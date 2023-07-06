@@ -18,33 +18,36 @@ class MazeGenerator:
             The location of the cell's neighbor.
         """
         if cell[1] == neighbor[1]:  # If both cells share the same column.
+            # +---+
+            # | C |
+            # +---+
+            # | N |
+            # +---+
             if cell[0] < neighbor[0]:
-                # +---+
-                # | C |
-                # +---+
-                # | N |
-                # +---+
                 self._grid[cell[0]][cell[1]][1] = False
                 self._grid[neighbor[0]][neighbor[1]][0] = False
+            
+            # +---+
+            # | N |
+            # +---+
+            # | C |
+            # +---+
             else:
-                # +---+
-                # | N |
-                # +---+
-                # | C |
-                # +---+
                 self._grid[cell[0]][cell[1]][0] = False
                 self._grid[neighbor[0]][neighbor[1]][1] = False
+                
         elif cell[0] == neighbor[0]:  # If both cells share the same row.
+            # +---+---+
+            # | C | N |
+            # +---+---+
             if cell[1] < neighbor[1]:
-                # +---+---+
-                # | C | N |
-                # +---+---+
                 self._grid[cell[0]][cell[1]][2] = False
                 self._grid[neighbor[0]][neighbor[1]][3] = False
+
+            # +---+---+
+            # | N | C |
+            # +---+---+
             else:
-                # +---+---+
-                # | N | C |
-                # +---+---+
                 self._grid[cell[0]][cell[1]][3] = False
                 self._grid[neighbor[0]][neighbor[1]][2] = False
 
