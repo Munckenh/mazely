@@ -1,4 +1,4 @@
-from maze import Maze, Utilities
+from mazely import Maze, Utilities
 
 
 def main():

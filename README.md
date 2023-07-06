@@ -1,23 +1,23 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/32x128-solution.svg" alt="Solved 32x128 maze">
+    <img src="https://raw.githubusercontent.com/Munckenh/mazely/main/docs/images/32x128-solution.svg" alt="Solved 32x128 maze">
 </p>
 
-# maze.py
+# mazely
 
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](http://choosealicense.com/licenses/mit/)
-[![Read the Docs](https://img.shields.io/readthedocs/mazepy)](http://mazepy.readthedocs.io/)
+[![Read the Docs](https://img.shields.io/readthedocs/mazely)](http://mazely.readthedocs.io/)
 
 An API for solving and generating mazes, written in Python.
 
 ## Documentation
 
-A library reference can be found [here](https://mazepy.readthedocs.io/en/latest/).
+A library reference can be found [here](https://mazely.readthedocs.io/en/latest/).
 
 ## Usage examples
 
 Run the Python scripts below from the repository directory.
 
-Also, see the [examples](https://github.com/Munckenh/maze.py/tree/main/examples) folder.
+Also, see the [examples](https://github.com/Munckenh/mazely/tree/main/examples) folder.
 
 ### Load and display a maze
 
@@ -32,7 +32,7 @@ utils.show_grid(maze.grid)
 ```
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/2015apec.svg" alt="APEC 2015">
+    <img src="https://raw.githubusercontent.com/Munckenh/mazely/main/docs/images/2015apec.svg" alt="APEC 2015">
 </p>
 
 ### Solve a maze and display its solution
@@ -48,7 +48,7 @@ utils.show_solution()
 ```
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/2019japan-solution.svg" alt="Japan 2019">
+    <img src="https://raw.githubusercontent.com/Munckenh/mazely/main/docs/images/2019japan-solution.svg" alt="Japan 2019">
 </p>
 
 ### Generate a maze and display its solution
@@ -64,7 +64,7 @@ utils.show_solution()
 ```
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/32x32-solution.svg" alt="Solved 32x32 maze">
+    <img src="https://raw.githubusercontent.com/Munckenh/mazely/main/docs/images/32x32-solution.svg" alt="Solved 32x32 maze">
 </p>
 
 ## Maze files

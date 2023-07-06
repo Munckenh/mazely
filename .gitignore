@@ -4,4 +4,4 @@ __pycache__/
 docs/_build
 dist/
 build/
-src/maze.py.egg-info/
+src/mazely.egg-info/
