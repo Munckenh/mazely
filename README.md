@@ -17,7 +17,7 @@ A library reference can be found [here](https://mazepy.readthedocs.io/en/latest/
 
 Run the Python scripts below from the repository directory.
 
-Also, see the [examples](examples/) folder.
+Also, see the [examples](https://github.com/Munckenh/maze.py/tree/main/examples) folder.
 
 ### Load and display a maze
 
