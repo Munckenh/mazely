@@ -1,4 +1,4 @@
-.. currentmodule:: maze
+.. currentmodule:: mazely
 
 Maze
 ====

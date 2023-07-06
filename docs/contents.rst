@@ -16,7 +16,7 @@ Table of Contents
    :caption: Development
 
    license
-   GitHub Repository <https://github.com/Munckenh/maze.py>
+   GitHub Repository <https://github.com/Munckenh/mazely>
 
 ..
    changelog

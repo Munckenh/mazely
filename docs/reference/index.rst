@@ -1,7 +1,7 @@
 Library Reference
 =================
 
-The following section outlines the ``maze.py`` library.
+The following section outlines the ``mazely`` library.
 
 .. toctree::
    :maxdepth: 2

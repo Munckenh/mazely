@@ -1,7 +1,7 @@
 License
 =======
 
-``maze.py`` is licensed under the MIT License:
+``mazely`` is licensed under the MIT License:
 
     Copyright (c) 2023 Kenneth C.
 

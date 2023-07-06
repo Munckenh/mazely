@@ -1,4 +1,4 @@
-.. currentmodule:: maze.algorithms
+.. currentmodule:: mazely.algorithms
 
 Algorithms
 ==========
