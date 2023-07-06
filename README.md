@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="docs/images/32x128-solution.svg" alt="Solved 32x128 maze">
+    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/32x128-solution.svg" alt="Solved 32x128 maze">
 </p>
 
 # maze.py
@@ -32,7 +32,7 @@ utils.show_grid(maze.grid)
 ```
 
 <p align="center">
-    <img src="docs/images/2015apec.svg" alt="APEC 2015">
+    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/2015apec.svg" alt="APEC 2015">
 </p>
 
 ### Solve a maze and display its solution
@@ -48,7 +48,7 @@ utils.show_solution()
 ```
 
 <p align="center">
-    <img src="docs/images/2019japan-solution.svg" alt="Japan 2019">
+    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/2019japan-solution.svg" alt="Japan 2019">
 </p>
 
 ### Generate a maze and display its solution
@@ -64,7 +64,7 @@ utils.show_solution()
 ```
 
 <p align="center">
-    <img src="docs/images/32x32-solution.svg" alt="Solved 32x32 maze">
+    <img src="https://raw.githubusercontent.com/Munckenh/maze.py/main/docs/images/32x32-solution.svg" alt="Solved 32x32 maze">
 </p>
 
 ## Maze files
