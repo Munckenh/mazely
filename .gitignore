@@ -3,3 +3,5 @@ __pycache__/
 .vscode/
 docs/_build
 dist/
+build/
+src/maze.py.egg-info/
