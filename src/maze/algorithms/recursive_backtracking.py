@@ -66,7 +66,7 @@ class RecursiveBacktracking(MazeGenerator):
         numpy.ndarray
             A two-dimensional array of cells representing a rectangular maze.
         """
-        sys.setrecursionlimit(rows * columns)
+        sys.setrecursionlimit(max(1000, rows * columns))
         self._visited = set()
         self._initiate_grid(rows, columns, walls=True)
         self._visit_cell(random.randrange(rows), random.randrange(columns))
