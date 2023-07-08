@@ -1,8 +1,7 @@
+<h1 align="center">Mazely</h1>
 <p align="center">
     <img src="https://raw.githubusercontent.com/Munckenh/mazely/main/docs/images/32x128-solution.svg" alt="Solved 32x128 maze">
 </p>
-
-# mazely
 
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](http://choosealicense.com/licenses/mit/)
 [![Read the Docs](https://img.shields.io/readthedocs/mazely)](http://mazely.readthedocs.io/)
