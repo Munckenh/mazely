@@ -31,7 +31,7 @@ Also, see the [examples](https://github.com/Munckenh/mazely/tree/main/examples) 
 
 Create an instance of `Maze` and pass a path to a maze file to load an existing maze. Use the `show_grid()` method from `Utilities` to display a grid of the maze.
 
-```py
+```python
 from mazely import Maze, Utilities
 
 maze = Maze(path="resources/2015apec.maze")
@@ -47,7 +47,7 @@ utils.show_grid(maze.grid)
 
 A solution is always made when you create an instance of `Maze`. To display the solution, use the `show_solution()` method from `Utilities`.
 
-```py
+```python
 from mazely import Maze, Utilities
 
 maze = Maze(path="resources/2019japan.maze")
@@ -63,7 +63,7 @@ utils.show_solution()
 
 To generate a maze, pass the row and column counts as you create a `Maze` instance. Refer to the previous section to display its solution.
 
-```py
+```python
 from mazely import Maze, Utilities
 
 maze = Maze(32, 32)
