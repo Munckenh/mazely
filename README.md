@@ -9,6 +9,14 @@
 
 An API for solving and generating mazes, written in Python.
 
+## Installation
+
+Install `mazely` with [pip](https://pip.pypa.io/en/stable/getting-started/):
+
+```shell
+pip install mazely
+```
+
 ## Documentation
 
 A library reference can be found [here](https://mazely.readthedocs.io/en/latest/).
