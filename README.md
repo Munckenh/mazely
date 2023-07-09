@@ -22,8 +22,6 @@ A library reference can be found [here](https://mazely.readthedocs.io/en/latest/
 
 ## Usage examples
 
-Run the Python scripts below from the repository directory.
-
 Also, see the [examples](https://github.com/Munckenh/mazely/tree/main/examples) folder.
 
 ### Load and display a maze
