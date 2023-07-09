@@ -1,2 +1,42 @@
+[project]
+name = "mazely"
+version = "0.2.0"
+authors = [{ name = "Kenneth C." }]
+description = "Implementation of maze-related algorithms"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT License" }
+keywords = ["mazely", "maze", "algorithms"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Developers",
+    "Topic :: Games/Entertainment :: Puzzle Games",
+    "Topic :: Software Development :: Libraries",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = ["matplotlib==3.7.1", "numpy==1.25.0"]
+
+[project.urls]
+Documentation = "https://mazely.readthedocs.io"
+Repository = "https://github.com/Munckenh/mazely.git"
+
+[project.optional-dependencies]
+docs = ["sphinx>=6.0,<8.0", "furo==2023.5.20"]
+test = ["pytest"]
+
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = [
+    # First version of setuptools to support pyproject.toml configuration
+    "setuptools>=61.0.0",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
