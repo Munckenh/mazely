@@ -51,7 +51,7 @@ class RecursiveBacktracking(MazeGenerator):
             # Visit the neighbor recursively
             self._visit_cell(neighbor[0], neighbor[1])
 
-    def generate(self, rows: int, columns: int) -> np.ndarray:
+    def generate(self, rows: int, columns: int, seed: int | None = None) -> np.ndarray:
         """Generate a maze.
 
         Parameters
@@ -60,13 +60,17 @@ class RecursiveBacktracking(MazeGenerator):
             The total number of rows of the maze.
         columns : int
             The total number of columns of the maze.
+        seed : int, optional
+            The seed value used to initialize the random number generator.
 
         Returns
         -------
         numpy.ndarray
             A two-dimensional array of cells representing a rectangular maze.
         """
+        
         sys.setrecursionlimit(max(1000, rows * columns))
+        random.seed(seed)
         self._visited = set()
         self._initiate_grid(rows, columns, walls=True)
         self._visit_cell(random.randrange(rows), random.randrange(columns))

@@ -68,7 +68,7 @@ class MazeGenerator:
 
         self._grid = np.full((rows, columns, 4), [walls] * 4)
 
-    def generate(self, rows: int, columns: int):
+    def generate(self, rows: int, columns: int, seed: int | None = None):
         """An abstract method to generate a maze.
 
         Parameters
@@ -77,6 +77,8 @@ class MazeGenerator:
             The total number of rows of the maze.
         columns : int
             The total number of columns of the maze.
+        seed : int, optional
+            The seed value used to initialize the random number generator.
 
         Raises
         ------
