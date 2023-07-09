@@ -26,6 +26,8 @@ class Maze:
         The location(s) of the goal cell(s).
     path : str, optional
         A path to a maze file. Defaults to :obj:`None`.
+    seed : int, optional
+        The seed value used to initialize the random number generator.
     generator : MazeGenerator
         An instance of a :class:`.MazeGenerator` subclass used for generating mazes. Defaults to :class:`.RecursiveBacktracking`.
     solver : MazeSolver
@@ -37,6 +39,7 @@ class Maze:
         rows: int = 3,
         columns: int = 3,
         path: str | None = None,
+        seed: int | None = None,
         generator: MazeGenerator = RecursiveBacktracking(),
         solver: MazeSolver = ShortestPath(),
     ):
@@ -49,7 +52,7 @@ class Maze:
             self.rows = rows
             self.columns = columns
             self.grid_size = rows * columns
-            self.grid = self.generator.generate(rows, columns)
+            self.grid = self.generator.generate(rows, columns, seed=seed)
             self.start = self.get_random_cell()
             self.goal = {self.get_random_cell()}
 
