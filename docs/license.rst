@@ -1,7 +1,7 @@
 License
 =======
 
-``mazely`` is licensed under the MIT License:
+*Mazely* is licensed under the MIT License:
 
     Copyright (c) 2023 Kenneth C.
 
