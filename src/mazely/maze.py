@@ -1,4 +1,5 @@
 import random
+import sys
 
 import numpy as np
 
@@ -26,7 +27,7 @@ class Maze:
         The location(s) of the goal cell(s).
     path : str, optional
         A path to a maze file. Defaults to :obj:`None`.
-    seed : int, optional
+    seed : int
         The seed value used to initialize the random number generator.
     generator : MazeGenerator
         An instance of a :class:`.MazeGenerator` subclass used for generating mazes. Defaults to :class:`.RecursiveBacktracking`.
@@ -39,12 +40,13 @@ class Maze:
         rows: int = 3,
         columns: int = 3,
         path: str | None = None,
-        seed: int | None = None,
+        seed: int = random.randrange(sys.maxsize),
         generator: MazeGenerator = RecursiveBacktracking(),
         solver: MazeSolver = ShortestPath(),
     ):
         self.generator = generator
         self.solver = solver
+        self.seed = seed
 
         if path is not None:
             self.load_maze(path)
@@ -106,7 +108,7 @@ class Maze:
                     if lines[row * 2 + 1][column * 4] == "|":
                         self.grid[row][column][3] = True
 
-    def generate(self, rows: int, columns: int):
+    def generate(self, rows: int, columns: int, seed: int = random.randrange(sys.maxsize)):
         """Generate a new maze and overwrite to :attr:`grid`.
 
         Parameters
@@ -115,11 +117,14 @@ class Maze:
             The total number of rows of the maze.
         columns : int
             The total number of columns of the maze.
+        seed : int
+            The seed value used to initialize the random number generator.
         """
+        self.seed = seed
         self.rows = rows
         self.columns = columns
         self.grid_size = rows * columns
-        self.grid = self.generator.generate(rows, columns)
+        self.grid = self.generator.generate(rows, columns, seed=seed)
 
     def solve(self):
         """Solve the maze with a specific configuration."""
