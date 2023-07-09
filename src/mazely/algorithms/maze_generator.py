@@ -78,7 +78,7 @@ class MazeGenerator:
         columns : int
             The total number of columns of the maze.
         seed : int, optional
-            The seed value used to initialize the random number generator.
+            The seed value used to initialize the random number generator. Defaults to ``None``.
 
         Raises
         ------
