@@ -1,4 +1,4 @@
-mazely
+Mazely
 =======
 
 A personal project.
