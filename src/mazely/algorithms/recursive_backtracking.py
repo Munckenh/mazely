@@ -27,7 +27,7 @@ class RecursiveBacktracking(MazeGenerator):
 
         # Iterate over the four directions in a randomized order
         for row_delta, column_delta in random.sample(
-            ((-1, 0), (0, 1), (1, 0), (0, -1)), k=4
+            ((-1, 0), (1, 0), (0, 1), (0, -1)), k=4
         ):
             # Get a random neighbor's row and column
             neighbor = (row + row_delta, column + column_delta)
