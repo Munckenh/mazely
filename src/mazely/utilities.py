@@ -183,7 +183,7 @@ class Utilities:
                 file.write(
                     f'\t<path fill="{color_list[i]}" d="M{cell[1] * cell_size + line_width / 2} {cell[0] * cell_size + line_width / 2}h{cell_size}v{cell_size}h-{cell_size}z" />\n'
                 )
-            file.write(f'\t<g fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square">')
+            file.write(f'\t<g fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square">\n')
             for row in range(len(grid)):
                 for column, walls in enumerate(grid[row]):
                     a = column * cell_size + line_width / 2
@@ -206,5 +206,5 @@ class Utilities:
                         file.write(
                             f'\t\t<line x1="{a}" y1="{b}" x2="{a}" y2="{d}" />\n'
                         )
-            file.write("</g>")
+            file.write("\t</g>\n")
             file.write("</svg>")
