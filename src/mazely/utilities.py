@@ -18,6 +18,12 @@ class Utilities:
         self.figure: plt.Figure | None = None
         self.axes: plt.Axes | None = None
 
+    @staticmethod
+    def _is_whole(number: float):
+        if number.is_integer():
+            return int(number)
+        return number
+
     def _plot_walls(self, grid):
         """Plot the walls of the maze with Matplotlib."""
         for row in range(len(grid)):
@@ -86,22 +92,26 @@ class Utilities:
         """
         with open(file_name, "w") as file:
             file.write(
-                f'<svg xmlns="http://www.w3.org/2000/svg" width="{cell_size * len(grid[0]) + line_width}" height="{cell_size * len(grid) + line_width}" fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square">\n'
+                f'<svg xmlns="http://www.w3.org/2000/svg" width="{cell_size * len(grid[0]) + line_width}" height="{cell_size * len(grid) + line_width}" fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square" style="background-color: #FFF">\n'
             )
             for row in range(len(grid)):
                 for column, walls in enumerate(grid[row]):
-                    a = column * cell_size + line_width / 2
-                    b = row * cell_size + line_width / 2
-                    c = (column + 1) * cell_size + line_width / 2
-                    d = (row + 1) * cell_size + line_width / 2
+                    a = self._is_whole(column * cell_size + line_width / 2)
+                    b = self._is_whole(row * cell_size + line_width / 2)
+                    c = self._is_whole((column + 1) * cell_size + line_width / 2)
+                    d = self._is_whole((row + 1) * cell_size + line_width / 2)
                     if row == 0 and walls[0]:
-                        file.write(f'\t<line x1="{a}" y1="{b}" x2="{c}" y2="{b}" />\n')
+                        file.write(
+                            f'\t<line x1="{a}" y1="{b}" x2="{c}" y2="{b}"/>\n')
                     if walls[1]:
-                        file.write(f'\t<line x1="{a}" y1="{d}" x2="{c}" y2="{d}" />\n')
+                        file.write(
+                            f'\t<line x1="{a}" y1="{d}" x2="{c}" y2="{d}"/>\n')
                     if walls[2]:
-                        file.write(f'\t<line x1="{c}" y1="{b}" x2="{c}" y2="{d}" />\n')
+                        file.write(
+                            f'\t<line x1="{c}" y1="{b}" x2="{c}" y2="{d}"/>\n')
                     if column == 0 and walls[3]:
-                        file.write(f'\t<line x1="{a}" y1="{b}" x2="{a}" y2="{d}" />\n')
+                        file.write(
+                            f'\t<line x1="{a}" y1="{b}" x2="{a}" y2="{d}"/>\n')
             file.write("</svg>")
 
     def show_solution(self, grid: np.ndarray, solution_path: list[tuple[int, int]]):
@@ -177,34 +187,37 @@ class Utilities:
 
         with open(file_name, "w") as file:
             file.write(
-                f'<svg xmlns="http://www.w3.org/2000/svg" width="{cell_size * len(grid[0]) + line_width}" height="{cell_size * len(grid) + line_width}">\n'
+                f'<svg xmlns="http://www.w3.org/2000/svg" width="{cell_size * len(grid[0]) + line_width}" height="{cell_size * len(grid) + line_width}" style="background-color: #FFF">\n'
             )
+
             for i, cell in enumerate(solution_path):
                 file.write(
-                    f'\t<path fill="{color_list[i]}" d="M{cell[1] * cell_size + line_width / 2} {cell[0] * cell_size + line_width / 2}h{cell_size}v{cell_size}h-{cell_size}z" />\n'
+                    f'\t<path fill="{color_list[i]}" d="M{self._is_whole(cell[1] * cell_size + line_width / 2)} {self._is_whole(cell[0] * cell_size + line_width / 2)}h{cell_size}v{cell_size}h-{cell_size}z"/>\n'
                 )
-            file.write(f'\t<g fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square">\n')
+            file.write(
+                f'\t<g fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square">\n')
             for row in range(len(grid)):
                 for column, walls in enumerate(grid[row]):
-                    a = column * cell_size + line_width / 2
-                    b = row * cell_size + line_width / 2
-                    c = (column + 1) * cell_size + line_width / 2
-                    d = (row + 1) * cell_size + line_width / 2
+                    a = self._is_whole(column * cell_size + line_width / 2)
+                    b = self._is_whole(row * cell_size + line_width / 2)
+                    c = self._is_whole(
+                        (column + 1) * cell_size + line_width / 2)
+                    d = self._is_whole((row + 1) * cell_size + line_width / 2)
                     if row == 0 and walls[0]:
                         file.write(
-                            f'\t\t<line x1="{a}" y1="{b}" x2="{c}" y2="{b}" />\n'
+                            f'\t\t<line x1="{a}" y1="{b}" x2="{c}" y2="{b}"/>\n'
                         )
                     if walls[1]:
                         file.write(
-                            f'\t\t<line x1="{a}" y1="{d}" x2="{c}" y2="{d}" />\n'
+                            f'\t\t<line x1="{a}" y1="{d}" x2="{c}" y2="{d}"/>\n'
                         )
                     if walls[2]:
                         file.write(
-                            f'\t\t<line x1="{c}" y1="{b}" x2="{c}" y2="{d}" />\n'
+                            f'\t\t<line x1="{c}" y1="{b}" x2="{c}" y2="{d}"/>\n'
                         )
                     if column == 0 and walls[3]:
                         file.write(
-                            f'\t\t<line x1="{a}" y1="{b}" x2="{a}" y2="{d}" />\n'
+                            f'\t\t<line x1="{a}" y1="{b}" x2="{a}" y2="{d}"/>\n'
                         )
             file.write("\t</g>\n")
             file.write("</svg>")
