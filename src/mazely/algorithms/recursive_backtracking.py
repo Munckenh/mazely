@@ -61,14 +61,14 @@ class RecursiveBacktracking(MazeGenerator):
         columns : int
             The total number of columns of the maze.
         seed : int, optional
-            The seed value used to initialize the random number generator.
+            The seed value used to initialize the random number generator. Defaults to ``None``
 
         Returns
         -------
         numpy.ndarray
             A two-dimensional array of cells representing a rectangular maze.
         """
-        
+
         sys.setrecursionlimit(max(1000, rows * columns))
         random.seed(seed)
         self._visited = set()
