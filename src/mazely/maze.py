@@ -204,26 +204,25 @@ class Maze:
             raise ValueError("Column is out of range.")
         self.goal = {(row, column)}
 
-    def add_goal_cell(self, row: int, column: int):
-        """Add a cell at a location as a goal cell.
+    def add_goal_cells(self, *cells: tuple[int, int]):
+        """Add cell locations as a goal cell.
 
         Parameters
         ----------
-        row : int
-            The row of a cell.
-        column : int
-            The column of a cell.
+        cells : tuple[int, int]
+            A cell location.
 
         Raises
         ------
         ValueError
             If either row or column is out of range. 
         """
-        if row < 0 or row >= self.rows:
-            raise ValueError("Row is out of range.")
-        if column < 0 or column >= self.columns:
-            raise ValueError("Column is out of range.")
-        self.goal.add((row, column))
+        for cell in cells:
+            if cell[0] < 0 or cell[0] >= self.rows:
+                raise ValueError("Row is out of range.")
+            if cell[1] < 0 or cell[1] >= self.columns:
+                raise ValueError("Column is out of range.")
+            self.goal.add((cell[0], cell[1]))
 
     def get_random_cell(self) -> tuple[int, int]:
         """Get a random cell location.
