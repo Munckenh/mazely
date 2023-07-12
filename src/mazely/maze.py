@@ -163,7 +163,7 @@ class Maze:
             self.grid, self.start, self.goal)
 
     def set_start_cell(self, row: int, column: int):
-        """Set a cell at a location as a start cell.
+        """Set a cell location as the start cell.
 
         Parameters
         ----------
@@ -184,7 +184,7 @@ class Maze:
         self.start = (row, column)
 
     def set_goal_cell(self, row: int, column: int):
-        """Set a cell at a location as a goal cell.
+        """Set a cell location as a goal cell.
 
         Parameters
         ----------
