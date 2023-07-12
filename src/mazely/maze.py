@@ -95,19 +95,20 @@ class Maze:
             self.grid_size = self.rows * self.columns
             self.grid = np.full((self.rows, self.columns, 4), [False] * 4)
 
+            # Initiate store-purpose variables
+            goal = []
+            start = []
+
             # Iterate over each possible cell position and update the wall details of the current cell.
             for row in range(self.rows):
                 for column in range(self.columns):
                     # If the current cell is the start.
                     if lines[row * 2 + 1][column * 4 + 2] == "S":
-                        self.set_start_cell(row, column)
+                        start.append((row, column))
 
                     # If the current cell is the goal.
                     elif lines[row * 2 + 1][column * 4 + 2] == "G":
-                        if hasattr(self, "goal"):
-                            self.add_goal_cell(row, column)
-                        else:
-                            self.set_goal_cell(row, column)
+                        goal.append((row, column))
 
                     # If a north wall exists.
                     if lines[row * 2][column * 4 + 2] == "-":
@@ -124,6 +125,19 @@ class Maze:
                     # If a west wall exists.
                     if lines[row * 2 + 1][column * 4] == "|":
                         self.grid[row][column][3] = True
+
+            # Update the start attribute
+            if len(start) > 0:
+                self.start = start[0]
+            else:
+                self.start = self.get_random_cell()
+
+            # Update the goal attribute
+            if len(goal) == 0:
+                self.goal = {self.get_random_cell()}
+            else:
+                self.goal = set()
+                self.add_goal_cells(*goal)
 
     def generate(self, rows: int, columns: int, seed: int = random.randrange(sys.maxsize)):
         """Generate a new maze and overwrite to :attr:`grid`.
