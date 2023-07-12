@@ -234,7 +234,7 @@ class Maze:
         """
         return (random.randrange(self.rows), random.randrange(self.columns))
 
-    def remove_wall(self, cell: tuple[int, int], neighbor: tuple[int, int]):
+    def remove_wall(self, cell: tuple[int, int], neighbor: tuple[int, int]) -> bool:
         """Remove the wall between a cell and its neighbor.
 
         Parameters
@@ -243,37 +243,35 @@ class Maze:
             The location of the cell.
         neighbor : tuple[int, int]
             The location of the cell's neighbor.
+
+        Returns
+        -------
+        bool
+            Whether the wall removal is successful.
         """
-        if cell[1] == neighbor[1]:  # If both cells share the same column.
-            # +---+
-            # | C |
-            # +---+
-            # | N |
-            # +---+
-            if cell[0] < neighbor[0]:
-                self._grid[cell[0]][cell[1]][1] = False
-                self._grid[neighbor[0]][neighbor[1]][0] = False
+        # If both cells share the same column.
+        if cell[1] == neighbor[1]:
+            # If both cells are beside each other row-wise
+            if abs(cell[0] - neighbor[0]) == 1:
+                if cell[0] < neighbor[0]:
+                    self.grid[cell[0]][cell[1]][1] = False
+                    self.grid[neighbor[0]][neighbor[1]][0] = False
+                else:
+                    self.grid[cell[0]][cell[1]][0] = False
+                    self.grid[neighbor[0]][neighbor[1]][1] = False
+                return True
+            return False
 
-            # +---+
-            # | N |
-            # +---+
-            # | C |
-            # +---+
-            else:
-                self._grid[cell[0]][cell[1]][0] = False
-                self._grid[neighbor[0]][neighbor[1]][1] = False
-
-        elif cell[0] == neighbor[0]:  # If both cells share the same row.
-            # +---+---+
-            # | C | N |
-            # +---+---+
-            if cell[1] < neighbor[1]:
-                self._grid[cell[0]][cell[1]][2] = False
-                self._grid[neighbor[0]][neighbor[1]][3] = False
-
-            # +---+---+
-            # | N | C |
-            # +---+---+
-            else:
-                self._grid[cell[0]][cell[1]][3] = False
-                self._grid[neighbor[0]][neighbor[1]][2] = False
+        # If both cells share the same row.
+        elif cell[0] == neighbor[0]:
+            # If both cells are beside each other column-wise
+            if abs(cell[1] - neighbor[1]) == 1:
+                if cell[1] < neighbor[1]:
+                    self.grid[cell[0]][cell[1]][2] = False
+                    self.grid[neighbor[0]][neighbor[1]][3] = False
+                else:
+                    self.grid[cell[0]][cell[1]][3] = False
+                    self.grid[neighbor[0]][neighbor[1]][2] = False
+                return True
+            return False
+        return False
