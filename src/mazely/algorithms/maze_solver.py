@@ -4,7 +4,7 @@ import numpy as np
 class MazeSolver:
     """A base class for maze-solving algorithms."""
 
-    def solve(self, grid: np.ndarray, start: tuple[int, int], goal: tuple[int, int]):
+    def solve(self, grid: np.ndarray, start: tuple[int, int], goal: set[tuple[int, int]]):
         """An abstract method to solve a maze.
 
         Parameters
