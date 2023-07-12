@@ -61,6 +61,22 @@ class Maze:
         self.solution_path = self.solver.solve(
             self.grid, self.start, self.goal)
 
+    @staticmethod
+    def are_cells_adjacent(*cells: tuple[int, int]) -> bool:
+        """Whether each cell is adjacent to the next.
+
+        Returns
+        -------
+        bool
+            ``True`` if each cell is adjacent to the next. ``False`` if otherwise. Also, ``False`` if only one cell is provided as an argument.
+        """
+        if len(cells) < 2:
+            return False
+        for i, cell in enumerate(cells[:-1]):
+            if not ((abs(cell[0] - cells[i+1][0]) == 1) ^ (abs(cell[1] - cells[i+1][1]) == 1)):
+                return False
+        return True
+
     def load_maze(self, path: str):
         """Parse a maze file.
 
