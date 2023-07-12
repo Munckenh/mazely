@@ -162,7 +162,16 @@ class Maze:
             The row of a cell.
         column : int
             The column of a cell.
+
+        Raises
+        ------
+        ValueError
+            If either row or column is out of range. 
         """
+        if row < 0 or row >= self.rows:
+            raise ValueError("Row is out of range.")
+        if column < 0 or column >= self.columns:
+            raise ValueError("Column is out of range.")
         self.goal = {(row, column)}
 
     def add_goal_cell(self, row: int, column: int):
