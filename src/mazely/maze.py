@@ -58,7 +58,8 @@ class Maze:
             self.start = self.get_random_cell()
             self.goal = {self.get_random_cell()}
 
-        self.solution_path = self.solver.solve(self.grid, self.start, self.goal)
+        self.solution_path = self.solver.solve(
+            self.grid, self.start, self.goal)
 
     def load_maze(self, path: str):
         """Parse a maze file.
@@ -128,7 +129,8 @@ class Maze:
 
     def solve(self):
         """Solve the maze with a specific configuration."""
-        self.solution_path = self.solver.solve(self.grid, self.start, self.goal)
+        self.solution_path = self.solver.solve(
+            self.grid, self.start, self.goal)
 
     def set_start_cell(self, row: int, column: int):
         """Set a cell at a location as a start cell.
@@ -204,7 +206,7 @@ class Maze:
             if cell[0] < neighbor[0]:
                 self._grid[cell[0]][cell[1]][1] = False
                 self._grid[neighbor[0]][neighbor[1]][0] = False
-            
+
             # +---+
             # | N |
             # +---+
@@ -213,7 +215,7 @@ class Maze:
             else:
                 self._grid[cell[0]][cell[1]][0] = False
                 self._grid[neighbor[0]][neighbor[1]][1] = False
-                
+
         elif cell[0] == neighbor[0]:  # If both cells share the same row.
             # +---+---+
             # | C | N |
