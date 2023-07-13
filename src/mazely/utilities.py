@@ -33,24 +33,28 @@ class Utilities:
                         [column, column + 1],
                         [-row, -row],
                         color="k",
+                        linewidth=2
                     )
                 if walls[2]:
                     self.axes.plot(
                         [column + 1, column + 1],
                         [-row, -row - 1],
                         color="k",
+                        linewidth=2
                     )
                 if walls[3]:
                     self.axes.plot(
                         [column, column],
                         [-row, -row - 1],
                         color="k",
+                        linewidth=2
                     )
                 if walls[1]:
                     self.axes.plot(
                         [column, column + 1],
                         [-row - 1, -row - 1],
                         color="k",
+                        linewidth=2
                     )
 
     def _initiate_plot(self, size=(8, 8)):
