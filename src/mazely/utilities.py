@@ -24,7 +24,7 @@ class Utilities:
             return int(number)
         return number
 
-    def _plot_walls(self, grid):
+    def _plot_walls(self, grid: np.ndarray):
         """Plot the walls of the maze with Matplotlib."""
         for row in range(len(grid)):
             for column, walls in enumerate(grid[row]):
@@ -57,7 +57,7 @@ class Utilities:
                         linewidth=2
                     )
 
-    def _initiate_plot(self, size=(8, 8)):
+    def _initiate_plot(self, size: tuple[int, int] = (8, 8)):
         """Initiate a plot from Matplotlib."""
         self.figure = plt.figure(figsize=size)
         self.axes = plt.axes()
