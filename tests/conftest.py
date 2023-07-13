@@ -1,4 +1,5 @@
 import pytest
+
 from mazely import Maze, Utilities
 from mazely.algorithms import RecursiveBacktracking
 
