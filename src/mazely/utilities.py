@@ -79,7 +79,7 @@ class Utilities:
         plt.show()
 
     def save_grid(
-        self, grid: np.ndarray, file_name: str, cell_size: int = 15, line_width: int = 2
+        self, grid: np.ndarray, file_path: str, cell_size: int = 15, line_width: int = 2
     ):
         """Save a maze as an SVG file.
 
@@ -87,14 +87,14 @@ class Utilities:
         ----------
         grid : numpy.ndarray
             A two-dimensional array of cells representing a rectangular maze.
-        file_name : str
+        file_path : str
             A path wherein the SVG file is saved.
         cell_size : int
             The size of each cell in pixels.
         line_width : int
             The width of the wall lines in pixels.
         """
-        with open(file_name, "w") as file:
+        with open(file_path, "w") as file:
             file.write(
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="{cell_size * len(grid[0]) + line_width}" height="{cell_size * len(grid) + line_width}" fill="none" stroke="#000" stroke-width="{line_width}" stroke-linecap="square" style="background-color: #FFF">\n'
             )
@@ -156,7 +156,7 @@ class Utilities:
         self,
         grid: np.ndarray,
         solution_path: list[tuple[int, int]],
-        file_name: str,
+        file_path: str,
         cell_size: int = 15,
         line_width: int = 2,
         colormap: str = "RdYlGn",
@@ -171,7 +171,7 @@ class Utilities:
             A two-dimensional array of cells representing a rectangular maze.
         solution_path : list[tuple[int, int]]
             An ordered list of cell locations representing the solution path.
-        file_name : str
+        file_path : str
             A path wherein the SVG file is saved.
         cell_size : int
             The size of each cell in pixels.
@@ -189,7 +189,7 @@ class Utilities:
             rgba = colormap_(value)
             color_list.append(colors.to_hex(rgba))
 
-        with open(file_name, "w") as file:
+        with open(file_path, "w") as file:
             file.write(
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="{cell_size * len(grid[0]) + line_width}" height="{cell_size * len(grid) + line_width}" style="background-color: #FFF">\n'
             )
