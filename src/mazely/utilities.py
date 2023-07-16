@@ -25,38 +25,25 @@ class Utilities:
             return int(number)
         return number
 
-    def _plot_walls(self, grid: np.ndarray):
+    def _plot_walls(self, grid: np.ndarray, cell_size: int = 15, line_width: int = 2):
         """Plot the walls of the maze with Matplotlib."""
+        line_width = line_width / cell_size
         for row in range(len(grid)):
             for column, walls in enumerate(grid[row]):
-                if walls[0]:
-                    self.axes.plot(
-                        [column, column + 1],
-                        [-row, -row],
-                        color="k",
-                        linewidth=2
-                    )
+                if row == 0 and walls[0]:
+                    self.axes.add_patch(patches.Rectangle(
+                        (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, 270, rotation_point=(column, row), color="k"))
                 if walls[2]:
-                    self.axes.plot(
-                        [column + 1, column + 1],
-                        [-row, -row - 1],
-                        color="k",
-                        linewidth=2
-                    )
-                if walls[3]:
-                    self.axes.plot(
-                        [column, column],
-                        [-row, -row - 1],
-                        color="k",
-                        linewidth=2
-                    )
+                    self.axes.add_patch(patches.Rectangle(
+                        (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, 180, rotation_point=(column + 1, row + 1), color="k"))
+                if column == 0 and walls[3]:
+                    self.axes.add_patch(patches.Rectangle(
+                        (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, 0, rotation_point=(column, row), color="k"))
                 if walls[1]:
-                    self.axes.plot(
-                        [column, column + 1],
-                        [-row - 1, -row - 1],
-                        color="k",
-                        linewidth=2
-                    )
+                    self.axes.add_patch(patches.Rectangle(
+                        (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, 90, rotation_point=(column + 1, row + 1), color="k"))
+        self.axes.set_xlim(-line_width / 2, len(grid[0]) + line_width / 2)
+        self.axes.set_ylim(len(grid) + line_width / 2, -line_width / 2)
 
     def _initiate_plot(self, size: tuple[int, int] = (8, 8)):
         """Initiate a plot from Matplotlib."""
