@@ -1,6 +1,7 @@
-from matplotlib import collections, colors, cm, patches
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import collections, colors, patches
 
 
 class Utilities:
@@ -181,7 +182,7 @@ class Utilities:
             A colormap included with Matplotlib.
         """
 
-        colormap_ = cm.get_cmap(colormap)
+        colormap_ = mpl.colormaps[colormap]
         array = np.linspace(0, 1, len(solution_path))
         color_list = list()
 
