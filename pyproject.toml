@@ -29,8 +29,7 @@ test = ["pytest"]
 
 [build-system]
 requires = [
-    # First version of setuptools to support pyproject.toml configuration
-    "setuptools>=61.0.0",
+    "setuptools>=61.0", # First version of setuptools to support pyproject.toml configuration
     "wheel",
 ]
 build-backend = "setuptools.build_meta"
