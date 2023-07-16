@@ -24,16 +24,16 @@ class Utilities:
             for column, walls in enumerate(grid[row]):
                 if row == 0 and walls[0]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, 270, rotation_point=(column, row), color="k"))
+                        (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, angle=270, rotation_point=(column, row), color="k"))
                 if walls[2]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, 180, rotation_point=(column + 1, row + 1), color="k"))
+                        (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, angle=180, rotation_point=(column + 1, row + 1), color="k"))
                 if column == 0 and walls[3]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, 0, rotation_point=(column, row), color="k"))
+                        (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, angle=0, rotation_point=(column, row), color="k"))
                 if walls[1]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, 90, rotation_point=(column + 1, row + 1), color="k"))
+                        (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, angle=90, rotation_point=(column + 1, row + 1), color="k"))
         self._axes.set_xlim(-line_width / 2, len(grid[0]) + line_width / 2)
         self._axes.set_ylim(len(grid) + line_width / 2, -line_width / 2)
 
