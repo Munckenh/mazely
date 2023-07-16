@@ -45,9 +45,9 @@ class Utilities:
         self.axes.set_xlim(-line_width / 2, len(grid[0]) + line_width / 2)
         self.axes.set_ylim(len(grid) + line_width / 2, -line_width / 2)
 
-    def _initiate_plot(self, size: tuple[int, int] = (8, 8)):
+    def _initiate_plot(self):
         """Initiate a plot from Matplotlib."""
-        self.figure = plt.figure(figsize=size)
+        self.figure = plt.figure()
         self.axes = plt.axes()
         self.axes.set_aspect("equal")
         self.axes.set_axis_off()
