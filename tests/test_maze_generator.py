@@ -28,6 +28,7 @@ def is_rectangular(grid: np.ndarray) -> bool:
 
 
 def is_boundary_closed(grid: np.ndarray) -> bool:
+    """Whether a grid has a closed boundary."""
     for cell in grid[0]:
         if not cell[0]:
             return False
@@ -41,6 +42,7 @@ def is_boundary_closed(grid: np.ndarray) -> bool:
 
 
 def has_isolated_cells(grid: np.ndarray) -> bool:
+    """Whether a grid has isolated cells."""
     for row in grid:
         for cell in row:
             if cell.all():
