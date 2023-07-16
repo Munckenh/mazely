@@ -119,12 +119,11 @@ class Utilities:
             An ordered list of cell locations representing the solution path.
         """
         self._initiate_plot()
-        self._plot_walls(grid)
 
         # Add an ordered list of rectangle patches.
         patch_list = []
         for row, column in solution_path:
-            patch_list.append(patches.Rectangle((column, -row - 1), 1, 1))
+            patch_list.append(patches.Rectangle((column, row), 1, 1))
 
         # Create a value array for the color map.
         values = [i for i in range(len(solution_path))]
@@ -138,6 +137,8 @@ class Utilities:
 
         # Add the collection to the axes.
         self.axes.add_collection(collection)
+
+        self._plot_walls(grid)
         plt.show()
 
     def save_solution(
