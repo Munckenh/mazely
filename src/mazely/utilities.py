@@ -5,19 +5,11 @@ from matplotlib import collections, colors, patches
 
 
 class Utilities:
-    """A class to perform maze-related utility functions.
-
-    Attributes
-    ----------
-    figure : :class:`~matplotlib.figure.Figure`, optional
-        A :class:`~matplotlib.figure.Figure` instance.
-    axes : :class:`~matplotlib.axes.Axes`, optional
-        A :class:`~matplotlib.axes.Axes` instance.
-    """
+    """A class to perform maze-related utility functions."""
 
     def __init__(self):
-        self.figure: plt.Figure | None = None
-        self.axes: plt.Axes | None = None
+        self._figure: plt.Figure
+        self._axes: plt.Axes
 
     @staticmethod
     def _is_whole(number: float):
@@ -31,26 +23,26 @@ class Utilities:
         for row in range(len(grid)):
             for column, walls in enumerate(grid[row]):
                 if row == 0 and walls[0]:
-                    self.axes.add_patch(patches.Rectangle(
+                    self._axes.add_patch(patches.Rectangle(
                         (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, 270, rotation_point=(column, row), color="k"))
                 if walls[2]:
-                    self.axes.add_patch(patches.Rectangle(
+                    self._axes.add_patch(patches.Rectangle(
                         (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, 180, rotation_point=(column + 1, row + 1), color="k"))
                 if column == 0 and walls[3]:
-                    self.axes.add_patch(patches.Rectangle(
+                    self._axes.add_patch(patches.Rectangle(
                         (column - line_width / 2, row - line_width / 2), line_width, 1 + line_width, 0, rotation_point=(column, row), color="k"))
                 if walls[1]:
-                    self.axes.add_patch(patches.Rectangle(
+                    self._axes.add_patch(patches.Rectangle(
                         (column + 1 - line_width / 2, row + 1 - line_width / 2), line_width, 1 + line_width, 90, rotation_point=(column + 1, row + 1), color="k"))
-        self.axes.set_xlim(-line_width / 2, len(grid[0]) + line_width / 2)
-        self.axes.set_ylim(len(grid) + line_width / 2, -line_width / 2)
+        self._axes.set_xlim(-line_width / 2, len(grid[0]) + line_width / 2)
+        self._axes.set_ylim(len(grid) + line_width / 2, -line_width / 2)
 
     def _initiate_plot(self):
         """Initiate a plot from Matplotlib."""
-        self.figure = plt.figure()
-        self.axes = plt.axes()
-        self.axes.set_aspect("equal")
-        self.axes.set_axis_off()
+        self._figure = plt.figure()
+        self._axes = plt.axes()
+        self._axes.set_aspect("equal")
+        self._axes.set_axis_off()
 
     def show_grid(self, grid: np.ndarray):
         """Display a plot of a rectangular, two-dimensional maze.
@@ -136,7 +128,7 @@ class Utilities:
         collection.set_array(values)
 
         # Add the collection to the axes.
-        self.axes.add_collection(collection)
+        self._axes.add_collection(collection)
 
         self._plot_walls(grid)
         plt.show()
