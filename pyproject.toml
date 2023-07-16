@@ -25,7 +25,13 @@ Repository = "https://github.com/Munckenh/mazely.git"
 
 [project.optional-dependencies]
 docs = ["sphinx>=6.0,<8.0", "furo==2023.5.20"]
-test = ["pytest"]
+test = [
+    "pytest>=7.4",
+    "pytest-mpl>=0.16",
+    "pytest-mock>=3.11",
+    "cairosvg>=2.7",
+    "cairocffi==1.6.0",
+]
 
 [build-system]
 requires = [
