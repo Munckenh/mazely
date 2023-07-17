@@ -3,8 +3,11 @@
     <img src="https://raw.githubusercontent.com/Munckenh/mazely/main/docs/images/32x128-solution.svg" alt="Solved 32x128 maze">
 </p>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](http://choosealicense.com/licenses/mit/)
-[![Read the Docs](https://img.shields.io/readthedocs/mazely)](http://mazely.readthedocs.io/)
+[![PyPI version](https://img.shields.io/pypi/v/mazely.svg)](https://pypi.org/project/mazely/)
+[![MIT License](https://img.shields.io/github/license/Munckenh/mazely
+)](https://choosealicense.com/licenses/mit/)
+[![Read the Docs](https://img.shields.io/readthedocs/mazely)](https://mazely.readthedocs.io/)
+[![GitHub workflow status](https://img.shields.io/github/actions/workflow/status/Munckenh/mazely/tests.yml?label=test)](https://github.com/Munckenh/mazely/actions?query=workflow%3ATests)
 
 An API for solving and generating mazes, written in Python.
 
