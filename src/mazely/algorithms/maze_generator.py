@@ -18,34 +18,17 @@ class MazeGenerator:
             The location of the cell's neighbor.
         """
         if cell[1] == neighbor[1]:  # If both cells share the same column.
-            # +---+
-            # | C |
-            # +---+
-            # | N |
-            # +---+
             if cell[0] < neighbor[0]:
                 self._grid[cell[0]][cell[1]][1] = False
                 self._grid[neighbor[0]][neighbor[1]][0] = False
-            # +---+
-            # | N |
-            # +---+
-            # | C |
-            # +---+
             else:
                 self._grid[cell[0]][cell[1]][0] = False
                 self._grid[neighbor[0]][neighbor[1]][1] = False
 
         elif cell[0] == neighbor[0]:  # If both cells share the same row.
-            # +---+---+
-            # | C | N |
-            # +---+---+
             if cell[1] < neighbor[1]:
                 self._grid[cell[0]][cell[1]][2] = False
                 self._grid[neighbor[0]][neighbor[1]][3] = False
-
-            # +---+---+
-            # | N | C |
-            # +---+---+
             else:
                 self._grid[cell[0]][cell[1]][3] = False
                 self._grid[neighbor[0]][neighbor[1]][2] = False
@@ -53,7 +36,8 @@ class MazeGenerator:
     def _initiate_grid(self, rows: int, columns: int, walls: bool = False):
         """Initiate a two-dimensional list of each cell's wall data.
 
-        The wall data is a list consisting of four Boolean values in NSEW order.
+        The wall data is a list consisting of four Boolean values in NSEW
+        order.
 
         Parameters
         ----------
@@ -67,7 +51,12 @@ class MazeGenerator:
 
         self._grid = np.full((rows, columns, 4), [walls] * 4)
 
-    def generate(self, rows: int, columns: int, seed: int | None = None):
+    def generate(
+        self,
+        rows: int,
+        columns: int,
+        seed: int | None = None
+    ) -> np.ndarray:
         """An abstract method to generate a maze.
 
         Parameters
@@ -77,7 +66,8 @@ class MazeGenerator:
         columns : int
             The total number of columns of the maze.
         seed : int, optional
-            The seed value used to initialize the random number generator. Defaults to ``None``.
+            The seed value used to initialize the random number generator.
+            Defaults to ``None``.
 
         Raises
         ------

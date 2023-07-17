@@ -7,7 +7,8 @@ from .maze_generator import MazeGenerator
 
 
 class RecursiveBacktracking(MazeGenerator):
-    """A maze-generating algorithm that creates a perfect maze using a randomized version of depth-first search."""
+    """A maze-generating algorithm that creates a perfect maze using a
+    randomized version of depth-first search."""
 
     def __init__(self):
         super().__init__()
@@ -45,13 +46,19 @@ class RecursiveBacktracking(MazeGenerator):
             if neighbor in self._visited:
                 continue
 
-            # Remove the wall between the current cell and the selected neighbor
+            # Remove the wall between the current cell and the selected
+            # neighbor
             self._remove_wall((row, column), neighbor)
 
             # Visit the neighbor recursively
             self._visit_cell(neighbor[0], neighbor[1])
 
-    def generate(self, rows: int, columns: int, seed: int | None = None) -> np.ndarray:
+    def generate(
+        self,
+        rows: int,
+        columns: int,
+        seed: int | None = None
+    ) -> np.ndarray:
         """Generate a maze.
 
         Parameters
@@ -61,7 +68,8 @@ class RecursiveBacktracking(MazeGenerator):
         columns : int
             The total number of columns of the maze.
         seed : int, optional
-            The seed value used to initialize the random number generator. Defaults to ``None``
+            The seed value used to initialize the random number generator.
+            Defaults to ``None``
 
         Returns
         -------

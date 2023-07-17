@@ -1,4 +1,5 @@
-"""Prints out the hash of the baseline images for `mazely.Utilities.save_grid()` and `mazely.Utilities.save_solution()`"""
+"""Prints out the hash of the baseline images for
+`mazely.Utilities.save_grid()` and `mazely.Utilities.save_solution()`"""
 
 import hashlib
 import tempfile
@@ -19,7 +20,11 @@ except OSError:
     import cairosvg
 
 
-def svg_to_hash256(file_path: str, verbose: bool = True, _debug: bool = False) -> str:
+def svg_to_hash256(
+    file_path: str,
+    verbose: bool = True,
+    _debug: bool = False
+) -> str:
     file_bytes = cairosvg.svg2png(url=file_path, background_color="#FFF")
     if _debug:
         output = f"{os.path.basename(os.path.splitext(file_path)[0])}.png"

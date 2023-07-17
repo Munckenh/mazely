@@ -3,15 +3,18 @@ import pytest
 from mazely.algorithms import MazeSolver, ShortestPath
 
 
-def are_both_cells_adjacent(cell_one: tuple[int, int], cell_two: tuple[int, int]) -> bool:
+def are_both_cells_adjacent(cell_one: tuple[int, int],
+                            cell_two: tuple[int, int]) -> bool:
     """Whether two cell locations are adjacent to each other."""
-    if (abs(cell_one[0] - cell_two[0]) == 1) ^ (abs(cell_one[1] - cell_two[1]) == 1):
+    if (abs(cell_one[0] - cell_two[0]) == 1) ^ \
+            (abs(cell_one[1] - cell_two[1]) == 1):
         return True
     return False
 
 
 def is_each_cell_adjacent(cells: list[tuple[int, int]]) -> bool:
-    """Whether, in a list of cell locations, each cell location is adjacent to the next one."""
+    """Whether, in a list of cell locations, each cell location is adjacent to
+    the next one."""
     for i, cell in enumerate(cells[:-1]):
         if are_both_cells_adjacent(cell, cells[i + 1]) is False:
             return False
@@ -19,7 +22,8 @@ def is_each_cell_adjacent(cells: list[tuple[int, int]]) -> bool:
 
 
 def are_there_duplicates(cells: list[tuple[int, int]]) -> bool:
-    """Whether there is a duplicate cell location in a list of cell locations"""
+    """Whether there is a duplicate cell location in a list of cell
+    locations"""
     for i, cell in enumerate(cells):
         if cell in cells[i + 1:]:
             return False
