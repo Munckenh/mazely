@@ -15,9 +15,13 @@ except OSError:
     import cairosvg
 
 
-@pytest.mark.mpl_image_compare(style="default", hash_library="baseline/hashes.json")
-# Run the following to generate a hash of the baseline image and create a PNG file to ensure that the images are as expected:
-# $ python -m pytest --mpl-generate-hash-library=hashes.json --mpl-generate-path=.
+@pytest.mark.mpl_image_compare(style="default",
+                               hash_library="baseline/hashes.json")
+# Run the following to generate a hash of the baseline image and create a PNG
+# file to ensure that the images are as expected:
+# $ python -m pytest \
+# $     --mpl-generate-hash-library=hashes.json \
+# $     --mpl-generate-path=.
 # To enable image comparison testing, pass `--mpl` when running `pytest`.
 # $ pytest --mpl
 def test_show_grid(utilities, grid, mocker):
@@ -34,12 +38,17 @@ def test_save_grid(utilities, grid, hashes, tmp_path):
     file_hash = hashlib.sha256(cairosvg.svg2png(
         url=file_path, background_color="#FFF")).hexdigest()
 
-    assert hashes["tests.test_utilities.test_save_grid"] == file_hash, "Hashes don't match"
+    assert hashes["tests.test_utilities.test_save_grid"] == file_hash, \
+        "Hashes don't match"
 
 
-@pytest.mark.mpl_image_compare(style="default", hash_library="baseline/hashes.json")
-# Run the following to generate a hash of the baseline image and create a PNG file to ensure that the images are as expected:
-# $ python -m pytest --mpl-generate-hash-library=hashes.json --mpl-generate-path=.
+@pytest.mark.mpl_image_compare(style="default",
+                               hash_library="baseline/hashes.json")
+# Run the following to generate a hash of the baseline image and create a PNG
+# file to ensure that the images are as expected:
+# $ python -m pytest \
+# $     --mpl-generate-hash-library=hashes.json \
+# $     --mpl-generate-path=.
 # To enable image comparison testing, pass `--mpl` when running `pytest`.
 # $ pytest --mpl
 def test_show_solution(utilities, grid, solution_path, mocker):
@@ -56,4 +65,5 @@ def test_save_solution(utilities, grid, solution_path, hashes, tmp_path):
     file_hash = hashlib.sha256(cairosvg.svg2png(
         url=file_path, background_color="#FFF")).hexdigest()
 
-    assert hashes["tests.test_utilities.test_save_solution"] == file_hash, "Hashes don't match"
+    assert hashes["tests.test_utilities.test_save_solution"] == file_hash, \
+        "Hashes don't match"

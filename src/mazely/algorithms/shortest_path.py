@@ -6,13 +6,17 @@ from .maze_solver import MazeSolver
 
 
 class ShortestPath(MazeSolver):
-    """A maze-solving algorithm that finds the shortest path using breadth-first search."""
+    """A maze-solving algorithm that finds the shortest path using
+    breadth-first search."""
 
     def __init__(self):
         pass
 
     def solve(
-        self, grid: np.ndarray, start: tuple[int, int], goal: set[tuple[int, int]]
+        self,
+        grid: np.ndarray,
+        start: tuple[int, int],
+        goal: set[tuple[int, int]]
     ) -> list[tuple[int, int]]:
         """Solve the maze.
 
@@ -39,8 +43,8 @@ class ShortestPath(MazeSolver):
         while queue:
             # Get the next cell.
             current = queue.popleft()
-
-            # Save the solution path and break the loop if the current cell is the goal.
+            # Save the solution path and break the loop if the current cell is
+            # the goal.
             if current in goal:
                 solution_path = []
 
@@ -71,5 +75,9 @@ class ShortestPath(MazeSolver):
 
                     # If the neighbor is not in the visited list.
                     if neighbor not in visited:
-                        queue.append(neighbor)  # Add the neighbor to the queue.
-                        path[neighbor] = current  # Store the path.
+
+                        # Add the neighbor to the queue.
+                        queue.append(neighbor)
+
+                        # Store the path.
+                        path[neighbor] = current

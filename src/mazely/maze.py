@@ -3,7 +3,8 @@ import sys
 
 import numpy as np
 
-from .algorithms import MazeGenerator, MazeSolver, RecursiveBacktracking, ShortestPath
+from .algorithms import (MazeGenerator, MazeSolver, RecursiveBacktracking,
+                         ShortestPath)
 
 
 class Maze:
@@ -30,9 +31,11 @@ class Maze:
     seed : int
         The seed value used to initialize the random number generator.
     generator : MazeGenerator
-        An instance of a :class:`.MazeGenerator` subclass used for generating mazes. Defaults to :class:`.RecursiveBacktracking`.
+        An instance of a :class:`.MazeGenerator` subclass used for generating
+        mazes. Defaults to :class:`.RecursiveBacktracking`.
     solver : MazeSolver
-        An instance of a :class:`.MazeSolver` subclass used for solving mazes. Defaults to :class:`.ShortestPath`.
+        An instance of a :class:`.MazeSolver` subclass used for solving mazes.
+        Defaults to :class:`.ShortestPath`.
     """
 
     def __init__(
@@ -68,12 +71,15 @@ class Maze:
         Returns
         -------
         bool
-            ``True`` if each cell is adjacent to the next. ``False`` if otherwise. Also, ``False`` if only one cell is provided as an argument.
+            ``True`` if each cell is adjacent to the next. ``False`` if
+            otherwise. Also, ``False`` if only one cell is provided as an
+            argument.
         """
         if len(cells) < 2:
             return False
         for i, cell in enumerate(cells[:-1]):
-            if not ((abs(cell[0] - cells[i + 1][0]) == 1) ^ (abs(cell[1] - cells[i + 1][1]) == 1)):
+            if not ((abs(cell[0] - cells[i + 1][0]) == 1)
+                    ^ (abs(cell[1] - cells[i + 1][1]) == 1)):
                 return False
         return True
 
@@ -99,7 +105,8 @@ class Maze:
             goal = []
             start = []
 
-            # Iterate over each possible cell position and update the wall details of the current cell.
+            # Iterate over each possible cell position and update the wall
+            # details of the current cell.
             for row in range(self.rows):
                 for column in range(self.columns):
                     # If the current cell is the start.
@@ -139,7 +146,12 @@ class Maze:
                 self.goal = set()
                 self.add_goal_cells(*goal)
 
-    def generate(self, rows: int, columns: int, seed: int = random.randrange(sys.maxsize)):
+    def generate(
+        self,
+        rows: int,
+        columns: int,
+        seed: int = random.randrange(sys.maxsize)
+    ):
         """Generate a new maze and overwrite to :attr:`grid`.
 
         Parameters
@@ -234,7 +246,11 @@ class Maze:
         """
         return (random.randrange(self.rows), random.randrange(self.columns))
 
-    def remove_wall(self, cell: tuple[int, int], neighbor: tuple[int, int]) -> bool:
+    def remove_wall(
+        self,
+        cell: tuple[int, int],
+        neighbor: tuple[int, int]
+    ) -> bool:
         """Remove the wall between a cell and its neighbor.
 
         Parameters
