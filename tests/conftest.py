@@ -36,6 +36,7 @@ def solution_path(maze):
 def utilities():
     return Utilities()
 
+
 @pytest.fixture
 def hashes():
     with open("tests/baseline/hashes.json", "r") as file:
