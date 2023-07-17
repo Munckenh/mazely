@@ -80,22 +80,22 @@ class Utilities:
             )
             for row in range(len(grid)):
                 for column, walls in enumerate(grid[row]):
-                    a = self._is_whole(column * cell_size + line_width / 2)
-                    b = self._is_whole(row * cell_size + line_width / 2)
-                    c = self._is_whole((column + 1) * cell_size + line_width / 2)
-                    d = self._is_whole((row + 1) * cell_size + line_width / 2)
+                    x1 = self._is_whole(column * cell_size + line_width / 2)
+                    y1 = self._is_whole(row * cell_size + line_width / 2)
+                    x2 = self._is_whole((column + 1) * cell_size + line_width / 2)
+                    y2 = self._is_whole((row + 1) * cell_size + line_width / 2)
                     if row == 0 and walls[0]:
                         file.write(
-                            f'\t<line x1="{a}" y1="{b}" x2="{c}" y2="{b}"/>\n')
+                            f'\t<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y1}"/>\n')
                     if walls[1]:
                         file.write(
-                            f'\t<line x1="{a}" y1="{d}" x2="{c}" y2="{d}"/>\n')
+                            f'\t<line x1="{x1}" y1="{y2}" x2="{x2}" y2="{y2}"/>\n')
                     if walls[2]:
                         file.write(
-                            f'\t<line x1="{c}" y1="{b}" x2="{c}" y2="{d}"/>\n')
+                            f'\t<line x1="{x2}" y1="{y1}" x2="{x2}" y2="{y2}"/>\n')
                     if column == 0 and walls[3]:
                         file.write(
-                            f'\t<line x1="{a}" y1="{b}" x2="{a}" y2="{d}"/>\n')
+                            f'\t<line x1="{x1}" y1="{y1}" x2="{x1}" y2="{y2}"/>\n')
             file.write("</svg>")
 
     def show_solution(self, grid: np.ndarray, solution_path: list[tuple[int, int]]):
