@@ -26,7 +26,6 @@ class MazeGenerator:
             if cell[0] < neighbor[0]:
                 self._grid[cell[0]][cell[1]][1] = False
                 self._grid[neighbor[0]][neighbor[1]][0] = False
-            
             # +---+
             # | N |
             # +---+

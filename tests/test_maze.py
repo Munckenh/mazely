@@ -13,8 +13,7 @@ def test_are_cells_adjacent(maze):
 
 
 def test_load_maze(maze):
-    maze.load_maze(Path(__file__).parent.parent /
-                   "resources" / "2015apec.maze")
+    maze.load_maze(Path(__file__).parent.parent / "resources" / "2015apec.maze")
     assert maze.rows == 16
     assert maze.columns == 16
     assert maze.grid_size == 256

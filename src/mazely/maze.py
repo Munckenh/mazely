@@ -73,7 +73,7 @@ class Maze:
         if len(cells) < 2:
             return False
         for i, cell in enumerate(cells[:-1]):
-            if not ((abs(cell[0] - cells[i+1][0]) == 1) ^ (abs(cell[1] - cells[i+1][1]) == 1)):
+            if not ((abs(cell[0] - cells[i + 1][0]) == 1) ^ (abs(cell[1] - cells[i + 1][1]) == 1)):
                 return False
         return True
 
@@ -175,7 +175,7 @@ class Maze:
         Raises
         ------
         ValueError
-            If either row or column is out of range. 
+            If either row or column is out of range.
         """
         if row < 0 or row >= self.rows:
             raise ValueError("Row is out of range.")
@@ -196,7 +196,7 @@ class Maze:
         Raises
         ------
         ValueError
-            If either row or column is out of range. 
+            If either row or column is out of range.
         """
         if row < 0 or row >= self.rows:
             raise ValueError("Row is out of range.")
@@ -215,7 +215,7 @@ class Maze:
         Raises
         ------
         ValueError
-            If either row or column is out of range. 
+            If either row or column is out of range.
         """
         for cell in cells:
             if cell[0] < 0 or cell[0] >= self.rows:

@@ -1,13 +1,13 @@
 """Prints out the hash of the baseline images for `mazely.Utilities.save_grid()` and `mazely.Utilities.save_solution()`"""
 
 import hashlib
-import os
 import tempfile
 
 from mazely import Maze, Utilities
 
 try:
     import cairosvg
+    import os
 except OSError:
     import os
     from ctypes.util import find_library

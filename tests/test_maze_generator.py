@@ -65,11 +65,9 @@ def test_recursive_backtracking():
     assert is_boundary_closed(grid) is True
     assert has_isolated_cells(grid) is False
 
-    # fmt: off
     grid_literal = np.array([
-        [[ True, False,  True,  True], [ True, False, False,  True], [ True, False,  True, False]], 
-        [[False, False,  True,  True], [False,  True,  True,  True], [False, False,  True,  True]],
-        [[False,  True, False,  True], [ True,  True, False, False], [False,  True,  True, False]], 
+        [[True, False, True, True], [True, False, False, True], [True, False, True, False]],
+        [[False, False, True, True], [False, True, True, True], [False, False, True, True]],
+        [[False, True, False, True], [True, True, False, False], [False, True, True, False]],
     ])
-    # fmt: on
     assert np.array_equal(grid, grid_literal) is True
