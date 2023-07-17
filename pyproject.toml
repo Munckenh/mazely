@@ -31,6 +31,7 @@ test = [
     "pytest-mock>=3.11",
     "cairosvg>=2.7",
     "cairocffi==1.6.0",
+    "flake8>=6.0"
 ]
 
 [build-system]
