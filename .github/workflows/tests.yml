@@ -1,7 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Tests
+name: Run Tests
 
 on:
   push:
@@ -10,34 +7,32 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.11"]
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        # Upgrade pip and setuptools and wheel to get as clean an install as possible
-        python -m pip install --upgrade pip setuptools wheel
-        # Install test dependencies
-        python -m pip install .[test]
-    - name: Lint with flake8
-      run: |
-        # Stop the build if there are Python syntax errors or undefined names
-        flake8 --select=E9,F63,F7,F82 --show-source
-        # Enable the --exit-zero option to treat errors as warnings
-        # Configure the maximum line length to adhere to PEP8 guidelines
-        flake8 --exit-zero --max-complexity=15 --max-line-length=79
-    - name: Test with pytest
-      run: |
-        # Enable pytest-mpl image comparison mode
-        pytest --mpl
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          # Upgrade pip, setuptools, and wheel to get as clean an install as possible
+          python -m pip install --upgrade pip setuptools wheel
+          # Install test dependencies
+          python -m pip install .[test]
+      - name: Lint with flake8
+        run: |
+          # Stop the build if there are Python syntax errors or undefined names
+          flake8 --select=E9,F63,F7,F82 --show-source
+          # Enable the --exit-zero option to treat errors as warnings
+          # Configure the maximum line length to adhere to PEP8 guidelines
+          flake8 --exit-zero --max-complexity=15 --max-line-length=79
+      - name: Test with pytest
+        run: |
+          # Enable pytest-mpl image comparison mode
+          pytest --mpl
