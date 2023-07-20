@@ -1,41 +1,31 @@
-name: Upload to PyPI
+name: Upload release to PyPI
 
 on:
-  workflow_run:
-    workflows: [Run Tests]
-    types:
-      - completed
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: |
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event_name == 'push' &&
-      startsWith(github.ref, 'refs/tags') &&
-      github.ref == 'refs/heads/main'
-    strategy:
-      matrix:
-        python-version: ["3.11"]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.x'
       - name: Install dependencies
-        run: |
-          # Upgrade pip, setuptools, wheel, and build
-          python -m pip install --upgrade pip setuptools wheel build
+        # Upgrade pip, setuptools, wheel, and build
+        run: python -m pip install --upgrade pip setuptools wheel build
       - name: Build package
         run: python -m build
       - name: Upload the distribution files
         uses: actions/upload-artifact@v3
         with:
-          path: ./dist
+          name: dist
+          path: dist/
   publish:
     needs: build
-    name: Upload release to PyPI
     runs-on: ubuntu-latest
     environment: pypi
     permissions:
@@ -44,7 +34,9 @@ jobs:
     steps:
     - name: Download the distribution files
       uses: actions/download-artifact@v3
+      with:
+        name: dist
+        path: dist/
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        packages-dir: artifact/
+      

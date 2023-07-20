@@ -2,9 +2,16 @@ name: Run Tests
 
 on:
   push:
-    branches: ["main", "feature**"]
+    paths:
+      - '*'
+      - 'src/**'
+      - 'tests/**'
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+  schedule:
+    # At 5:00 p.m. GMT+8 on Saturday
+    - cron: '0 9 * * 6'
 
 jobs:
   test:
@@ -21,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          # Upgrade pip, setuptools, and wheel to get as clean an install as possible
+          # Upgrade pip, setuptools, and wheel
           python -m pip install --upgrade pip setuptools wheel
           # Install test dependencies
           python -m pip install .[test]
