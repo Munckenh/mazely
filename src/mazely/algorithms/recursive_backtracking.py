@@ -28,17 +28,17 @@ class RecursiveBacktracking(MazeGenerator):
 
         # Iterate over the four directions in a randomized order
         for row_delta, column_delta in random.sample(
-            ((-1, 0), (1, 0), (0, 1), (0, -1)), k=4
+            ((-1, 0), (1, 0), (0, 1), (0, -1)), 4
         ):
             # Get a random neighbor's row and column
             neighbor = (row + row_delta, column + column_delta)
 
             # See if the neighbor exists
             if (
-                neighbor[0] < 0
-                or neighbor[0] >= len(self._grid)
-                or neighbor[1] < 0
-                or neighbor[1] >= len(self._grid[0])
+                neighbor[0] < 0 or
+                neighbor[0] >= len(self._grid) or
+                neighbor[1] < 0 or
+                neighbor[1] >= len(self._grid[0])
             ):
                 continue
 
