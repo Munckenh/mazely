@@ -20,50 +20,50 @@ class Utilities:
     def _plot_walls(
         self,
         grid: np.ndarray,
-        cell_size: int = 15,
-        line_width: int = 2
+        cell_size: int,
+        wall_width: int
     ):
         """Plot the walls of the maze with Matplotlib."""
-        line_width = line_width / cell_size
+        wall_width = wall_width / cell_size
         for row in range(len(grid)):
             for column, walls in enumerate(grid[row]):
                 if row == 0 and walls[0]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column - line_width / 2, row - line_width / 2),
-                        line_width,
-                        1 + line_width,
+                        (column - wall_width / 2, row - wall_width / 2),
+                        wall_width,
+                        1 + wall_width,
                         angle=270,
                         rotation_point=(column, row), color="k"))
                 if walls[2]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column + 1 - line_width / 2,
-                         row + 1 - line_width / 2),
-                        line_width,
-                        1 + line_width,
+                        (column + 1 - wall_width / 2,
+                         row + 1 - wall_width / 2),
+                        wall_width,
+                        1 + wall_width,
                         angle=180,
                         rotation_point=(column + 1, row + 1),
                         color="k"
                     ))
                 if column == 0 and walls[3]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column - line_width / 2, row - line_width / 2),
-                        line_width,
-                        1 + line_width,
+                        (column - wall_width / 2, row - wall_width / 2),
+                        wall_width,
+                        1 + wall_width,
                         angle=0,
                         rotation_point=(column, row),
                         color="k"
                     ))
                 if walls[1]:
                     self._axes.add_patch(patches.Rectangle(
-                        (column + 1 - line_width / 2,
-                         row + 1 - line_width / 2),
-                        line_width,
-                        1 + line_width,
+                        (column + 1 - wall_width / 2,
+                         row + 1 - wall_width / 2),
+                        wall_width,
+                        1 + wall_width,
                         angle=90,
                         rotation_point=(column + 1, row + 1),
                         color="k"))
-        self._axes.set_xlim(-line_width / 2, len(grid[0]) + line_width / 2)
-        self._axes.set_ylim(len(grid) + line_width / 2, -line_width / 2)
+        self._axes.set_xlim(-wall_width / 2, len(grid[0]) + wall_width / 2)
+        self._axes.set_ylim(len(grid) + wall_width / 2, -wall_width / 2)
 
     def _initiate_plot(self):
         """Initiate a plot from Matplotlib."""
@@ -72,7 +72,12 @@ class Utilities:
         self._axes.set_aspect("equal")
         self._axes.set_axis_off()
 
-    def show_grid(self, grid: np.ndarray):
+    def show_grid(
+        self,
+        grid: np.ndarray,
+        cell_size: int = 15,
+        wall_width: int = 2
+    ):
         """Display a plot of a rectangular, two-dimensional maze.
 
         Visualization is done with `Matplotlib <https://matplotlib.org/>`_.
@@ -81,9 +86,13 @@ class Utilities:
         ----------
         grid : numpy.ndarray
             A two-dimensional array of cells representing a rectangular maze.
+        cell_size : int
+            The height and the width of each cell.
+        wall_width : int
+            The width of each wall.
         """
         self._initiate_plot()
-        self._plot_walls(grid)
+        self._plot_walls(grid, cell_size, wall_width)
         plt.show()
 
     def save_grid(
@@ -91,7 +100,7 @@ class Utilities:
         grid: np.ndarray,
         file_path: str,
         cell_size: int = 15,
-        line_width: int = 2
+        wall_width: int = 2
     ):
         """Save a maze as an SVG file.
 
@@ -103,30 +112,30 @@ class Utilities:
             A path wherein the SVG file is saved.
         cell_size : int
             The size of each cell in pixels.
-        line_width : int
+        wall_width : int
             The width of the wall lines in pixels.
         """
         with open(file_path, "w") as file:
             file.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" '
-                f'width="{cell_size * len(grid[0]) + line_width}" '
-                f'height="{cell_size * len(grid) + line_width}" '
-                f'fill="none" stroke="#000" stroke-width="{line_width}" '
+                f'width="{cell_size * len(grid[0]) + wall_width}" '
+                f'height="{cell_size * len(grid) + wall_width}" '
+                f'fill="none" stroke="#000" stroke-width="{wall_width}" '
                 'stroke-linecap="square" style="background-color: #FFF">\n'
             )
             for row in range(len(grid)):
                 for column, walls in enumerate(grid[row]):
                     x1 = self._is_whole(
-                        column * cell_size + line_width / 2
+                        column * cell_size + wall_width / 2
                     )
                     y1 = self._is_whole(
-                        row * cell_size + line_width / 2
+                        row * cell_size + wall_width / 2
                     )
                     x2 = self._is_whole(
-                        (column + 1) * cell_size + line_width / 2
+                        (column + 1) * cell_size + wall_width / 2
                     )
                     y2 = self._is_whole(
-                        (row + 1) * cell_size + line_width / 2
+                        (row + 1) * cell_size + wall_width / 2
                     )
                     if row == 0 and walls[0]:
                         file.write(
@@ -153,7 +162,9 @@ class Utilities:
     def show_solution(
         self,
         grid: np.ndarray,
-        solution_path: list[tuple[int, int]]
+        solution_path: list[tuple[int, int]],
+        cell_size: int = 15,
+        wall_width: int = 2
     ):
         """Display a plot of a rectangular, two-dimensional maze and its
         solution path.
@@ -166,6 +177,10 @@ class Utilities:
             A two-dimensional array of cells representing a rectangular maze.
         solution_path : list[tuple[int, int]]
             An ordered list of cell locations representing the solution path.
+        cell_size : int
+            The height and the width of each cell.
+        wall_width : int
+            The width of each wall.
         """
         self._initiate_plot()
 
@@ -191,7 +206,7 @@ class Utilities:
         # Add the collection to the axes.
         self._axes.add_collection(collection)
 
-        self._plot_walls(grid)
+        self._plot_walls(grid, cell_size, wall_width)
         plt.show()
 
     def save_solution(
@@ -200,7 +215,7 @@ class Utilities:
         solution_path: list[tuple[int, int]],
         file_path: str,
         cell_size: int = 15,
-        line_width: int = 2,
+        wall_width: int = 2,
         colormap: str = "RdYlGn",
     ):
         """Save a maze and its solution as an SVG file.
@@ -218,7 +233,7 @@ class Utilities:
             A path wherein the SVG file is saved.
         cell_size : int
             The size of each cell in pixels.
-        line_width : int
+        wall_width : int
             The width of the wall lines in pixels.
         colormap : str
             A colormap included with Matplotlib.
@@ -235,29 +250,29 @@ class Utilities:
         with open(file_path, "w") as file:
             file.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" '
-                f'width="{cell_size * len(grid[0]) + line_width}" '
-                f'height="{cell_size * len(grid) + line_width}" '
+                f'width="{cell_size * len(grid[0]) + wall_width}" '
+                f'height="{cell_size * len(grid) + wall_width}" '
                 'style="background-color: #FFF">\n'
             )
 
             for i, cell in enumerate(solution_path):
                 file.write(
                     f'\t<path fill="{color_list[i]}" d="M'
-                    f'{self._is_whole(cell[1] * cell_size + line_width / 2)} '
-                    f'{self._is_whole(cell[0] * cell_size + line_width / 2)}'
+                    f'{self._is_whole(cell[1] * cell_size + wall_width / 2)} '
+                    f'{self._is_whole(cell[0] * cell_size + wall_width / 2)}'
                     f'h{cell_size}v{cell_size}h-{cell_size}z"/>\n'
                 )
             file.write(
-                f'\t<g fill="none" stroke="#000" stroke-width="{line_width}" '
+                f'\t<g fill="none" stroke="#000" stroke-width="{wall_width}" '
                 'stroke-linecap="square">\n'
             )
             for row in range(len(grid)):
                 for column, walls in enumerate(grid[row]):
-                    a = self._is_whole(column * cell_size + line_width / 2)
-                    b = self._is_whole(row * cell_size + line_width / 2)
+                    a = self._is_whole(column * cell_size + wall_width / 2)
+                    b = self._is_whole(row * cell_size + wall_width / 2)
                     c = self._is_whole(
-                        (column + 1) * cell_size + line_width / 2)
-                    d = self._is_whole((row + 1) * cell_size + line_width / 2)
+                        (column + 1) * cell_size + wall_width / 2)
+                    d = self._is_whole((row + 1) * cell_size + wall_width / 2)
                     if row == 0 and walls[0]:
                         file.write(
                             f'\t\t<line x1="{a}" y1="{b}" '
