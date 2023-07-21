@@ -3,7 +3,9 @@ import sys
 
 import numpy as np
 
-from .algorithms import (MazeGenerator, MazeSolver, RecursiveBacktracking,
+from .algorithms import (MazeGenerator,
+                         MazeSolver,
+                         RecursiveBacktracking,
                          ShortestPath)
 
 
