@@ -1,7 +1,9 @@
 import numpy as np
 import pytest
 
-from mazely.algorithms import MazeGenerator, RecursiveBacktracking
+from mazely.algorithms import (MazeGenerator,
+                               RecursiveBacktracking,
+                               RandomizedPrim)
 
 
 def is_each_seed_unique(generator: MazeGenerator) -> bool:
@@ -81,5 +83,28 @@ def test_recursive_backtracking():
             [True, True, False, False],
             [False, True, True, False]
         ],
+    ])
+    assert np.array_equal(grid, grid_literal) is True
+
+
+def test_randomized_prim():
+    generator = RandomizedPrim()
+    assert is_each_seed_unique(generator)
+
+    grid = generator.generate(3, 3, seed=0)
+    assert is_rectangular(grid) is True
+    assert is_boundary_closed(grid) is True
+    assert has_isolated_cells(grid) is False
+
+    grid_literal = np.array([
+        [[True, False,  True,  True],
+         [True, False, False,  True],
+         [True, False,  True, False]],
+        [[False, False, False,  True],
+         [False,  True,  True, False],
+         [False,  True,  True,  True]],
+        [[False,  True, False,  True],
+         [True,  True, False, False],
+         [True,  True,  True, False]]
     ])
     assert np.array_equal(grid, grid_literal) is True

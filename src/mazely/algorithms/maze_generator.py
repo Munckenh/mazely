@@ -33,6 +33,22 @@ class MazeGenerator:
                 self._grid[cell[0]][cell[1]][3] = False
                 self._grid[neighbor[0]][neighbor[1]][2] = False
 
+    def _get_neighbors(self, cell: tuple[int, int]) -> list[tuple[int, int]]:
+        neighbors = []
+        for row_distance, column_distance in ((-1, 0),
+                                              (1, 0),
+                                              (0, 1),
+                                              (0, -1)):
+            neighbor = (cell[0] + row_distance, cell[1] + column_distance)
+            if (
+                neighbor[0] >= 0 and
+                neighbor[0] < len(self._grid) and
+                neighbor[1] >= 0 and
+                neighbor[1] < len(self._grid[0])
+            ):
+                neighbors.append(neighbor)
+        return neighbors
+
     def _initiate_grid(self, rows: int, columns: int, walls: bool = False):
         """Initiate a two-dimensional list of each cell's wall data.
 
