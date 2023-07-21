@@ -6,6 +6,8 @@ from .maze_generator import MazeGenerator
 
 
 class RandomizedPrim(MazeGenerator):
+    """A maze-generating algorithm that creates a perfect maze using a
+    randomized version of Prim's algorithm."""
     def __init__(self):
         super().__init__()
 
@@ -15,6 +17,23 @@ class RandomizedPrim(MazeGenerator):
         columns: int,
         seed: int | None = None
     ) -> np.ndarray:
+        """Generate a maze.
+
+        Parameters
+        ----------
+        rows : int
+            The total number of rows of the maze.
+        columns : int
+            The total number of columns of the maze.
+        seed : int, optional
+            The seed value used to initialize the random number generator.
+            Defaults to ``None``
+
+        Returns
+        -------
+        numpy.ndarray
+            A two-dimensional array of cells representing a rectangular maze.
+        """
         random.seed(seed)
         self._initiate_grid(rows, columns, walls=True)
 

@@ -85,6 +85,11 @@ class MazeGenerator:
             The seed value used to initialize the random number generator.
             Defaults to ``None``.
 
+        Returns
+        -------
+        numpy.ndarray
+            A two-dimensional array of cells representing a rectangular maze.
+
         Raises
         ------
         NotImplementedError
