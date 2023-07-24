@@ -1,3 +1,5 @@
+"""Save a 64 by 64 rectangular, two-dimensional maze as `image.svg`."""
+
 from mazely import Maze, Utilities
 
 

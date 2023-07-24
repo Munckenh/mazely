@@ -1,3 +1,5 @@
+"""Display a 32 by 32 rectangular, two-dimensional maze and its solution."""
+
 from mazely import Maze, Utilities
 
 
