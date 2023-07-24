@@ -1,5 +1,5 @@
-"""Generate a 32 by 32 rectangular, two-dimensional maze with a
-randomized version of Prim's algorithm.
+"""Generate a 32 by 32 rectangular, two-dimensional maze with a randomized
+version of Prim's algorithm.
 """
 
 from mazely import Maze, Utilities

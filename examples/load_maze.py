@@ -1,4 +1,6 @@
-"""Display a rectangular, two-dimensional maze loaded from `resources/2015apec.maze`."""
+"""Display a rectangular, two-dimensional maze loaded from
+`resources/2015apec.maze`.
+"""
 
 from mazely import Maze, Utilities
 
