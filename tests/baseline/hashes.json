@@ -1,6 +1,6 @@
 {
   "tests.test_utilities.test_save_grid": "a7fea358bfee23c3c435a54287aa5a74c19c168a63b8d045b473e4787fcc1856",
   "tests.test_utilities.test_save_solution": "9d79c16c89cc44af73c34a67587299a5a4b348fb9075bf9eab8f7bdfd610557b",
-  "tests.test_utilities.test_show_grid": "2b4b6cae230e0e36b358c45d9663692567aabc8719eccde37f826e795ba30af8",
-  "tests.test_utilities.test_show_solution": "f53561c9c897900b8d772299ede277fe4570906f3fd7a54d71da52a0cfed6f13"
+  "tests.test_utilities.test_show_grid": "a69d85dc9549e8c3cface92a9ee38f3de89448b31404c9bc6834d18e825f6f87",
+  "tests.test_utilities.test_show_solution": "1238e0ce8e1cbec56c818ac61ed85d914f2b8db5b70dffc61ba5e31f8c1e0108"
 }
