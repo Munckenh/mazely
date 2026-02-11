@@ -49,5 +49,6 @@ package-dir = { "" = "src" }
 where = ["src"]
 
 [tool.pytest.ini_options]
+mpl-deterministic = true
 addopts = ["--import-mode=importlib"]
 testpaths = ["tests"]
